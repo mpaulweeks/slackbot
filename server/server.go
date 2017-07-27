@@ -8,8 +8,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/mpaulweeks/slackbot/Godeps/_workspace/src/github.com/gorilla/schema"
-	_ "github.com/mpaulweeks/slackbot/importer"
+	"github.com/gorilla/schema"
 	"github.com/mpaulweeks/slackbot/robots"
 )
 
