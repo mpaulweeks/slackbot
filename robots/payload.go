@@ -16,14 +16,18 @@ type SlashCommand struct {
 }
 
 type ButtonWrapper struct {
-	Payload ButtonPayload
+	ButtonPayload `schema:"payload"`
+}
+
+type ButtonUser struct {
+	Id   string `schema:"id"`
+	Name string `schema:"name"`
 }
 
 type ButtonPayload struct {
-	CallbackId string `schema:"callback_id"`
-	Value      string `schema:"value"`
-	// UserId     string `schema:"user_id"`
-	// UserName   string `schema:"user_name"`
+	CallbackId string     `schema:"callback_id"`
+	Value      string     `schema:"value"`
+	User       ButtonUser `schema:"user"`
 }
 
 type Payload struct {
