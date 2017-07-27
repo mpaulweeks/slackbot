@@ -31,10 +31,11 @@ func buttonHandler(robotMap map[string][]robots.Robot) http.HandlerFunc {
 			return
 		}
 		d := schema.NewDecoder()
-		command := new(robots.ButtonWrapper)
+		command := new(robots.ButtonRequest)
 		err = d.Decode(command, r.PostForm)
 		if err != nil {
 			log.Println("Couldn't parse post request:", err)
+			log.Println(r.PostForm)
 			log.Println(r.PostForm.Get("payload"))
 		}
 		robot := robots.Robots["roulette"][0]

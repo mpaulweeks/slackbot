@@ -15,7 +15,7 @@ type SlashCommand struct {
 	Command string `schema:"command"`
 }
 
-type ButtonWrapper struct {
+type ButtonRequest struct {
 	ButtonPayload `schema:"payload"`
 }
 
@@ -30,8 +30,6 @@ type ButtonAction struct {
 
 type ButtonPayload struct {
 	CallbackId string `schema:"callback_id"`
-	UserId     string `schema:"user_id"`
-	UserName   string `schema:"user_name"`
 	// Actions    []ButtonAction `schema:"actions"`
 	// User       ButtonUser     `schema:"user"`
 }
