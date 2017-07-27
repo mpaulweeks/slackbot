@@ -16,7 +16,10 @@ type SlashCommand struct {
 }
 
 type ButtonPayload struct {
-	Value string `schema:"value"`
+	CallbackId string `schema:"callback_id"`
+	UserId     string `schema:"user_id"`
+	UserName   string `schema:"user_name"`
+	Value      string `schema:"value"`
 }
 
 type Payload struct {
