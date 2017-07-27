@@ -29,9 +29,11 @@ type ButtonAction struct {
 }
 
 type ButtonPayload struct {
-	Actions    []ButtonAction `schema:"actions"`
-	CallbackId string         `schema:"callback_id"`
-	User       ButtonUser     `schema:"user"`
+	CallbackId string `schema:"callback_id"`
+	UserId     string `schema:"user_id"`
+	UserName   string `schema:"user_name"`
+	// Actions    []ButtonAction `schema:"actions"`
+	// User       ButtonUser     `schema:"user"`
 }
 
 type Payload struct {
