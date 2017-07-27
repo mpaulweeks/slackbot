@@ -35,9 +35,10 @@ func buttonHandler(robotMap map[string][]robots.Robot) http.HandlerFunc {
 		err = d.Decode(command, r.PostForm)
 		if err != nil {
 			log.Println("Couldn't parse post request:", err)
+			log.Println(r.PostForm.Get("payload"))
 		}
 		robot := robots.Robots["roulette"][0]
-		resp := fmt.Sprintf("\n%s", robot.HandleButton(&command.Payload))
+		resp := fmt.Sprintf("\n%s", robot.HandleButton(&command.ButtonPayload))
 		w.WriteHeader(http.StatusOK)
 		jsonResp(w, strings.TrimSpace(resp))
 	}
