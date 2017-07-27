@@ -20,7 +20,28 @@ func Main(robotMap map[string][]robots.Robot) {
 	}
 	http.HandleFunc("/slack", slashCommandHandler(robotMap))
 	http.HandleFunc("/slack_hook", hookHandler(robotMap))
+	http.HandleFunc("/slack_button", buttonHandler(robotMap))
 	startServer()
+}
+
+func buttonHandler(robotMap map[string][]robots.Robot) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		err := r.ParseForm()
+		if err != nil {
+			w.WriteHeader(http.StatusBadRequest)
+			return
+		}
+		d := schema.NewDecoder()
+		command := new(robots.ButtonPayload)
+		err = d.Decode(command, r.PostForm)
+		if err != nil {
+			log.Println("Couldn't parse post request:", err)
+		}
+		robot := robots.Robots["roulette"][0]
+		resp := fmt.Sprintf("\n%s", robot.HandleButton(command))
+		w.WriteHeader(http.StatusOK)
+		jsonResp(w, strings.TrimSpace(resp))
+	}
 }
 
 func hookHandler(robotMap map[string][]robots.Robot) http.HandlerFunc {
