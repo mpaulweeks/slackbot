@@ -24,10 +24,14 @@ type ButtonUser struct {
 	Name string `schema:"name"`
 }
 
+type ButtonAction struct {
+	Value string `schema:"value"`
+}
+
 type ButtonPayload struct {
-	CallbackId string     `schema:"callback_id"`
-	Value      string     `schema:"value"`
-	User       ButtonUser `schema:"user"`
+	Actions    []ButtonAction `schema:"actions"`
+	CallbackId string         `schema:"callback_id"`
+	User       ButtonUser     `schema:"user"`
 }
 
 type Payload struct {
