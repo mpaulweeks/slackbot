@@ -39,7 +39,7 @@ func buttonHandler(robotMap map[string][]robots.Robot) http.HandlerFunc {
 			log.Println(r.PostForm.Get("payload"))
 		}
 		robot := robots.Robots["roulette"][0]
-		resp := fmt.Sprintf("\n%s", robot.HandleButton(&command.ButtonPayload))
+		resp := fmt.Sprintf("\n%s", robot.HandleButton(&command.AttachmentActionCallback))
 		w.WriteHeader(http.StatusOK)
 		jsonResp(w, strings.TrimSpace(resp))
 	}

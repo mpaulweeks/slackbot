@@ -8,30 +8,17 @@ import (
 	"net/url"
 	"os"
 	"strings"
+
+	slack "github.com/nlopes/slack"
 )
+
+type ButtonRequest struct {
+	slack.AttachmentActionCallback `schema:"payload"`
+}
 
 type SlashCommand struct {
 	Payload
 	Command string `schema:"command"`
-}
-
-type ButtonRequest struct {
-	ButtonPayload `schema:"payload"`
-}
-
-type ButtonUser struct {
-	Id   string `schema:"id"`
-	Name string `schema:"name"`
-}
-
-type ButtonAction struct {
-	Value string `schema:"value"`
-}
-
-type ButtonPayload struct {
-	CallbackId string `schema:"callback_id"`
-	// Actions    []ButtonAction `schema:"actions"`
-	// User       ButtonUser     `schema:"user"`
 }
 
 type Payload struct {

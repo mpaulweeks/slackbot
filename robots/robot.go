@@ -1,12 +1,16 @@
 package robots
 
-import "log"
+import (
+	"log"
+
+	slack "github.com/nlopes/slack"
+)
 
 // Robot describes the necessary methods to be registered as a slack bot
 type Robot interface {
 	Run(p *Payload) (botString string)
 	Description() (description string)
-	HandleButton(p *ButtonPayload) (info string)
+	HandleButton(p *slack.AttachmentActionCallback) (info string)
 }
 
 // Robots is the map of registered command to robot
