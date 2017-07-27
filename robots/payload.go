@@ -15,6 +15,10 @@ type SlashCommand struct {
 	Command string `schema:"command"`
 }
 
+type ButtonPayload struct {
+	Value string `schema:"value"`
+}
+
 type Payload struct {
 	Token       string  `schema:"token"`
 	TeamID      string  `schema:"team_id"`
