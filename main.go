@@ -1,11 +1,26 @@
 package main
 
 import (
-	_ "github.com/trinchan/slackbot/importer"
-	"github.com/trinchan/slackbot/robots"
-	"github.com/trinchan/slackbot/server"
+	"github.com/mpaulweeks/slackbot/robots"
+	"github.com/mpaulweeks/slackbot/server"
 )
 
+type robutt struct {
+}
+
+func (r *robutt) Run(p *robots.Payload) string {
+	return "hello"
+}
+
+func (r *robutt) Description() string {
+	return "Create a review request for a random contributor."
+}
+
+func (r *robutt) HandleButton(bp *robots.ButtonPayload) string {
+	return "success"
+}
+
 func main() {
+	robots.RegisterRobot("roulette", &robutt{})
 	server.Main(robots.Robots)
 }

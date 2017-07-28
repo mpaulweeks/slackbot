@@ -12,8 +12,26 @@ import (
 	slack "github.com/nlopes/slack"
 )
 
+type ButtonPayload struct {
+	Actions    []slack.AttachmentAction `json:"actions"`
+	CallbackID string                   `json:"callback_id"`
+	Team       slack.Team               `json:"team"`
+	Channel    slack.Channel            `json:"channel"`
+	User       slack.User               `json:"user"`
+
+	OriginalMessage slack.Message `json:"original_message"`
+
+	ActionTs     string `json:"action_ts"`
+	MessageTs    string `json:"message_ts"`
+	AttachmentID string `json:"attachment_id"`
+	Token        string `json:"token"`
+	ResponseURL  string `json:"response_url"`
+
+	IsAppUnfurl string `json:"is_app_unfurl"`
+}
+
 type ButtonRequest struct {
-	slack.AttachmentActionCallback `schema:"payload"`
+	ButtonPayload `schema:"payload"`
 }
 
 type SlashCommand struct {
